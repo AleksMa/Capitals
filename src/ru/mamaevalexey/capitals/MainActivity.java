@@ -59,11 +59,10 @@ public class MainActivity extends Activity{
         setContentView(R.layout.activity_main);
         SharedPreferences shared = this.getPreferences(0);
         dbManager = DBManager.getInstance(this);
-        
+        //---
         RelativeLayout layout =(RelativeLayout)findViewById(R.id.BasicGameBackground);
         layout.setBackgroundResource(R.drawable.original);
-        
-        
+        //---
         Resources res = getResources();
         String[][][] ARR = new String[2][5][];
 		//ARR[1] = new String[2][5];
