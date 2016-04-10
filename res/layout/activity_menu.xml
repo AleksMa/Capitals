@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ru.mamaevalexey.capitals.MenuActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="32dp"
+        android:text="Главное меню"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/MenuNGButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="32dp"
+        android:text="Новая игра"
+        android:onClick="buttonClicked" />
+
+    <Button
+        android:id="@+id/MenuSGButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/MenuNGButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="32dp"
+        android:text="Особая игра"
+        android:onClick="buttonClicked"
+      	 />
+
+    <Button
+        android:id="@+id/MenuHoFButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/MenuSGButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="32dp"
+        android:text="Рекорды"
+        android:onClick="buttonClicked" />
+
+    <Button
+        android:id="@+id/MenuSButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/MenuHoFButton"
+        android:layout_below="@+id/MenuHoFButton"
+        android:layout_marginTop="33dp"
+        android:onClick="buttonClicked"
+        android:text="Настройки"
+        android:textSize="32dp" />
+
+</RelativeLayout>

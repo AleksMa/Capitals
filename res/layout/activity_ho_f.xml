@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36dp" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/DeleteAllButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="168dp"
+        android:layout_marginTop="50dp"
+        android:onClick="buttonClicked"
+        android:text="Удалить все"
+        android:textSize="32dp" />
+
+    <!--  <Button
+        android:id="@+id/DeleteForName"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/DeleteAllButton"
+        android:layout_alignRight="@+id/DeleteAllButton"
+        android:layout_below="@+id/scrollView1"
+        android:layout_marginTop="100dp"
+        android:onClick="buttonClicked"
+        android:text="Удалить для"
+        android:textSize="32dp" />
+
+    <EditText
+        android:id="@+id/DeleteNameEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/DeleteForName"
+        android:layout_alignRight="@+id/DeleteForName"
+        android:layout_below="@+id/DeleteForName"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Имя игрока"
+        android:textSize="32dp" /> -->
+
+</RelativeLayout>
