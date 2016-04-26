@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 public class MenuActivity extends Activity {
 
@@ -15,7 +16,8 @@ public class MenuActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
-	
+		RelativeLayout layout =(RelativeLayout)findViewById(R.id.MenuLayout);
+        layout.setBackgroundResource(R.drawable.original);
 	}
 
 	/*@Override

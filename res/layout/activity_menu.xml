@@ -6,18 +6,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ru.mamaevalexey.capitals.MenuActivity" >
+    tools:context="ru.mamaevalexey.capitals.MenuActivity"
+    android:id="@+id/MenuLayout" >
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:textSize="32dp"
         android:text="Главное меню"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:background="@drawable/button_background" />
 
     <Button
         android:id="@+id/MenuNGButton"
@@ -28,7 +30,8 @@
         android:layout_marginTop="50dp"
         android:textSize="32dp"
         android:text="Новая игра"
-        android:onClick="buttonClicked" />
+        android:onClick="buttonClicked"
+        android:background="@drawable/button_background" />
 
     <Button
         android:id="@+id/MenuSGButton"
@@ -40,7 +43,7 @@
         android:textSize="32dp"
         android:text="Особая игра"
         android:onClick="buttonClicked"
-      	 />
+      	android:background="@drawable/button_background" />
 
     <Button
         android:id="@+id/MenuHoFButton"
@@ -51,7 +54,8 @@
         android:layout_marginTop="50dp"
         android:textSize="32dp"
         android:text="Рекорды"
-        android:onClick="buttonClicked" />
+        android:onClick="buttonClicked"
+        android:background="@drawable/button_background" />
 
     <Button
         android:id="@+id/MenuSButton"
@@ -62,6 +66,7 @@
         android:layout_marginTop="33dp"
         android:onClick="buttonClicked"
         android:text="Настройки"
-        android:textSize="32dp" />
+        android:textSize="32dp"
+        android:background="@drawable/button_background" />
 
 </RelativeLayout>

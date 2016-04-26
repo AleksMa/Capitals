@@ -10,26 +10,18 @@
     tools:context="ru.mamaevalexey.capitals.MainActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/CountryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="83dp"
         android:text="Назовите столицу государства"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="36dp" />
-    
-    <TextView
-        android:id="@+id/CountryText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:text="Государство"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="36dp" />
+        android:gravity = "center"
+        android:textSize="36dp"
+        android:textAlignment="center"
+        android:background="@drawable/button_background"
+        />
 
     <Button
         android:id="@+id/button20"
@@ -78,17 +70,6 @@
         android:onClick="buttonClicked"
         android:background="@drawable/button_background" />
 
-    <TextView
-        android:id="@+id/ScoreText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button20"
-        android:layout_marginLeft="88dp"
-        android:layout_toRightOf="@+id/textView1"
-        android:textSize="36dp"
-        android:text="Счет: 0"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <Button
         android:id="@+id/NewGameButton"
         android:layout_width="300dp"
@@ -98,17 +79,19 @@
         android:layout_toLeftOf="@+id/textView1"
         android:text="Новая игра"
         android:textSize="32dp"
-        android:onClick="buttonClicked" />
+        android:onClick="buttonClicked" 
+        android:background="@drawable/button_background"/>
 
-    <Button
-        android:id="@+id/HoFbutton"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/NewGameButton"
+    <TextView
+        android:id="@+id/ScoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignRight="@+id/NewGameButton"
-        android:layout_alignTop="@+id/button22"
-        android:textSize="32dp"
-        android:text="Рекорды"
-        android:onClick="buttonClicked" />
+        android:layout_alignTop="@+id/button20"
+        android:layout_marginRight="88dp"
+        android:text="Счет: 0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36dp" 
+        android:background="@drawable/button_background" />
 
 </RelativeLayout>

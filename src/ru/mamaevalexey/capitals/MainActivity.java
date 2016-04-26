@@ -46,24 +46,27 @@ public class MainActivity extends Activity{
 	public ArrayList<Country> MainCountryArray = new ArrayList<Country>(); 
 	private String [] Variants = new String[4];
 	public Country MainCountry;
+	public int IDs[][] = new int [5][]; 
 	private boolean right, trans = false, light = false;
 	private String ClickedCapital, PreviousCapital="";
 	private int score=0;
     private String GameName = "Новый Игрок";
     boolean check[] = new boolean[5];
+    boolean tap = false;
     
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Resources res = getResources();
         SharedPreferences shared = this.getPreferences(0);
         dbManager = DBManager.getInstance(this);
         //---
-        RelativeLayout layout =(RelativeLayout)findViewById(R.id.BasicGameBackground);
-        layout.setBackgroundResource(R.drawable.original);
+        
+        //layout.setBackgroundResource(0x7f020057);
         //---
-        Resources res = getResources();
+        MakeId();
         String[][][] ARR = new String[2][5][];
 		//ARR[1] = new String[2][5];
         ARR[0][0] = res.getStringArray(R.array.EUcountries);
@@ -81,7 +84,7 @@ public class MainActivity extends Activity{
         if(getIntent().getExtras().getBoolean("CH_ALL")){
         	for(int i=0; i<5;i++){
         		for(int j=0; j<ARR[1][i].length;j++){
-        			MainCountryArray.add(new Country(ARR[0][i][j], ARR[1][i][j]));	
+        			MainCountryArray.add(new Country(ARR[0][i][j], ARR[1][i][j], IDs[i][j]));
         		}
         	}
         }
@@ -96,8 +99,7 @@ public class MainActivity extends Activity{
             		if(check[i]){
             			for(int j=0; j<ARR[1][i].length;j++){
             			
-            				MainCountryArray.add(new Country(ARR[0][i][j], ARR[1][i][j]));
-            			
+            				MainCountryArray.add(new Country(ARR[0][i][j], ARR[1][i][j], IDs[i][j]));
             		}
             	}
             }
@@ -109,7 +111,7 @@ public class MainActivity extends Activity{
         	 Variants = savedInstanceState.getStringArray("var");
         	 score = savedInstanceState.getInt("scr");
         	 PreviousCapital = savedInstanceState.getString("pr");
-        	 MainCountry = new Country(savedInstanceState.getString("mcou"), savedInstanceState.getString("mcap"));
+        	 //MainCountry = new Country(savedInstanceState.getString("mcou"), savedInstanceState.getString("mcap"));
         	 Update();
         }
         else if(shared!=null){
@@ -230,16 +232,20 @@ public class MainActivity extends Activity{
     		score=0;
     		Update();
     	}
-    	else if(buttonId==R.id.HoFbutton){
+    	/*else if(buttonId==R.id.HoFbutton){
     		startActivity(new Intent(this, HoFActivity.class));
-    	}
+    	}*/
     	else{
+    		if(!tap){
     		Knopochki(btn);
+    		}
     	}
     }
     
     public void Knopochki(final Button btn){
+    	tap = true;
     	Drawable d = getResources().getDrawable(R.drawable.button_check);
+    	
 		btn.setBackgroundDrawable(d);
 		new Handler().postDelayed(new Runnable() {
             @Override
@@ -269,10 +275,12 @@ public class MainActivity extends Activity{
     }
     
     public void ContinueGame(){
+    	tap = false;
     	if(right){
     	score++;
     	ChooseCountry();
         MakeVariants();
+        
     	}	
     	else {
     		if(score!=0)dbManager.addResult(GameName, score);
@@ -330,7 +338,8 @@ public class MainActivity extends Activity{
     		btn.setText("" + Variants[i]);
     	}
     	TextView txt = (TextView) findViewById(R.id.CountryText);
-		txt.setText(MainCountry.country);
+		txt.setText("Назовите столицу государства \n" + MainCountry.country);
+		//txt.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_background));
     	TextView scr = (TextView) findViewById(R.id.ScoreText);
     	scr.setText("Счет: "+score);
     }
@@ -342,8 +351,53 @@ public class MainActivity extends Activity{
     	if(MainCountry.capital.equals(PreviousCapital)){
     		ChooseCountry();
     	}
+    	RelativeLayout layout =(RelativeLayout)findViewById(R.id.BasicGameBackground);
+    	layout.setBackgroundResource(MainCountry.id);
     }
 
+    public void MakeId(){
+    	
+    	IDs[0]=new int[45];
+    	IDs[1]=new int[45];
+    	IDs[2]=new int[54];
+    	IDs[3]=new int[35];
+    	IDs[4]=new int[13];
+    	
+    	int [] EUid = {R.drawable.at, R.drawable.al, R.drawable.ad, R.drawable.by , R.drawable.be , R.drawable.bg, R.drawable.ba, R.drawable.va,
+    			R.drawable.gb, R.drawable.hu, R.drawable.de, R.drawable.gr, R.drawable.dk, R.drawable.ie, R.drawable.is, R.drawable.es, 
+    			R.drawable.it, R.drawable.cy, R.drawable.lv, R.drawable.lt, R.drawable.li, R.drawable.lu, R.drawable.mk, R.drawable.mt,
+    			R.drawable.md, R.drawable.mc, R.drawable.nl, R.drawable.no, R.drawable.pl, R.drawable.pt, R.drawable.ru, R.drawable.ro,
+    			R.drawable.sm, R.drawable.rs, R.drawable.sk, R.drawable.si, R.drawable.ua, R.drawable.fi, R.drawable.fr, R.drawable.hr,
+    			R.drawable.me, R.drawable.cz, R.drawable.ch, R.drawable.se, R.drawable.ee};
+    	int [] AFid = {R.drawable.dz, R.drawable.ao, R.drawable.bj, R.drawable.bw, R.drawable.bf, R.drawable.bi, R.drawable.ga, R.drawable.gm,
+    			R.drawable.gh, R.drawable.gn, R.drawable.gw, R.drawable.dj, R.drawable.eg, R.drawable.zm, R.drawable.zw, R.drawable.cv,
+    			R.drawable.cm, R.drawable.ke, R.drawable.km, R.drawable.cd, R.drawable.cg, R.drawable.si, R.drawable.ls, R.drawable.lr,
+    			R.drawable.lb, R.drawable.ly, R.drawable.mu, R.drawable.mr, R.drawable.mg, R.drawable.mw, R.drawable.ml, R.drawable.ma,
+    			R.drawable.mz, R.drawable.na, R.drawable.ne, R.drawable.ng, R.drawable.rw, R.drawable.st, R.drawable.sz, R.drawable.sc,
+    			R.drawable.sn, R.drawable.so, R.drawable.sd, R.drawable.sl, R.drawable.tz, R.drawable.tg, R.drawable.tn, R.drawable.ug,
+    			R.drawable.cf, R.drawable.td, R.drawable.gq, R.drawable.er, R.drawable.et, R.drawable.za};
+    	
+    	
+    	
+    		for(int j=0;j<IDs[0].length;j++){
+        		IDs[0][j]=EUid[j];
+        		IDs[1][j]=R.drawable.original; 
+        		//IDs[1][j]=ASid[j];
+        	}
+    		for(int j=0;j<IDs[2].length;j++){
+        		IDs[2][j]=AFid[j];
+        	}
+    		for(int j=0;j<IDs[3].length;j++){
+    			IDs[3][j]=R.drawable.original; 
+    			//IDs[3][j]=AMid[j];
+        	}
+    		for(int j=0;j<IDs[4].length;j++){
+    			IDs[4][j]=R.drawable.original; 
+    			//IDs[4][j]=AOid[j];
+        	}
+    	}
+    
+    }
     
     
-}
+
