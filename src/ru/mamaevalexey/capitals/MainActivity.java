@@ -104,7 +104,7 @@ public class MainActivity extends Activity{
             	}
             }
         }
-        
+        GameName = getIntent().getExtras().getString("Name");
         LoadCountries();
         if(savedInstanceState!=null)
         {
@@ -258,11 +258,13 @@ public class MainActivity extends Activity{
                     @Override
                     public void run() {
                     	btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_background));
+                    	tap = false;
                     	ContinueGame();
                     }
                 }, 1000);
             }
         }, 1000);
+		
     }
     
     public void Result(){
@@ -275,7 +277,6 @@ public class MainActivity extends Activity{
     }
     
     public void ContinueGame(){
-    	tap = false;
     	if(right){
     	score++;
     	ChooseCountry();
@@ -352,6 +353,7 @@ public class MainActivity extends Activity{
     		ChooseCountry();
     	}
     	RelativeLayout layout =(RelativeLayout)findViewById(R.id.BasicGameBackground);
+    	//layout.setBackgroundColor(Color.WHITE);
     	layout.setBackgroundResource(MainCountry.id);
     }
 
@@ -369,31 +371,45 @@ public class MainActivity extends Activity{
     			R.drawable.md, R.drawable.mc, R.drawable.nl, R.drawable.no, R.drawable.pl, R.drawable.pt, R.drawable.ru, R.drawable.ro,
     			R.drawable.sm, R.drawable.rs, R.drawable.sk, R.drawable.si, R.drawable.ua, R.drawable.fi, R.drawable.fr, R.drawable.hr,
     			R.drawable.me, R.drawable.cz, R.drawable.ch, R.drawable.se, R.drawable.ee};
+    	
+    	int [] ASid = {R.drawable.az, R.drawable.am, R.drawable.af, R.drawable.bd, R.drawable.bh, R.drawable.bn, R.drawable.bt, R.drawable.tl,
+    			R.drawable.vn, R.drawable.ge, R.drawable.il, R.drawable.in, R.drawable.id, R.drawable.jo, R.drawable.iq, R.drawable.ir,
+    			R.drawable.ye, R.drawable.kz, R.drawable.kh, R.drawable.qa, R.drawable.kg, R.drawable.cn, R.drawable.kw, R.drawable.la,
+    			R.drawable.my, R.drawable.mv, R.drawable.mn, R.drawable.mm, R.drawable.np, R.drawable.ae, R.drawable.om, R.drawable.pk,
+    			R.drawable.sa, R.drawable.kp, R.drawable.sg, R.drawable.sy, R.drawable.tj, R.drawable.th, R.drawable.tm, R.drawable.tr, R.drawable.uz,
+    			R.drawable.ph, R.drawable.lk, R.drawable.kr, R.drawable.jp };
+    	
     	int [] AFid = {R.drawable.dz, R.drawable.ao, R.drawable.bj, R.drawable.bw, R.drawable.bf, R.drawable.bi, R.drawable.ga, R.drawable.gm,
     			R.drawable.gh, R.drawable.gn, R.drawable.gw, R.drawable.dj, R.drawable.eg, R.drawable.zm, R.drawable.zw, R.drawable.cv,
-    			R.drawable.cm, R.drawable.ke, R.drawable.km, R.drawable.cd, R.drawable.cg, R.drawable.si, R.drawable.ls, R.drawable.lr,
+    			R.drawable.cm, R.drawable.ke, R.drawable.km, R.drawable.cd, R.drawable.cg, R.drawable.ci, R.drawable.ls, R.drawable.lr,
     			R.drawable.lb, R.drawable.ly, R.drawable.mu, R.drawable.mr, R.drawable.mg, R.drawable.mw, R.drawable.ml, R.drawable.ma,
     			R.drawable.mz, R.drawable.na, R.drawable.ne, R.drawable.ng, R.drawable.rw, R.drawable.st, R.drawable.sz, R.drawable.sc,
     			R.drawable.sn, R.drawable.so, R.drawable.sd, R.drawable.sl, R.drawable.tz, R.drawable.tg, R.drawable.tn, R.drawable.ug,
     			R.drawable.cf, R.drawable.td, R.drawable.gq, R.drawable.er, R.drawable.et, R.drawable.za};
     	
+    	int [] AMid = {R.drawable.ag, R.drawable.ar, R.drawable.bs, R.drawable.bb, R.drawable.bz, R.drawable.bo, R.drawable.br,
+    			R.drawable.ve, R.drawable.ht, R.drawable.gy, R.drawable.gt, R.drawable.hn, R.drawable.gd, R.drawable.dm,
+    			R.drawable.dom, R.drawable.ca, R.drawable.co, R.drawable.cr, R.drawable.cu, R.drawable.mx, R.drawable.ni,
+    			R.drawable.pa, R.drawable.py, R.drawable.pe, R.drawable.sv, R.drawable.vc, R.drawable.kn, R.drawable.lc, 
+    			R.drawable.us, R.drawable.sr, R.drawable.tt, R.drawable.uy, R.drawable.cl, R.drawable.ec, R.drawable.jm };
+    	
+    	int [] AOid = {R.drawable.au, R.drawable.vu, R.drawable.ki, R.drawable.mh, R.drawable.nz, R.drawable.pw, R.drawable.pg,
+    			R.drawable.ws, R.drawable.sb, R.drawable.to, R.drawable.tv, R.drawable.fm, R.drawable.fj};
+    	
     	
     	
     		for(int j=0;j<IDs[0].length;j++){
         		IDs[0][j]=EUid[j];
-        		IDs[1][j]=R.drawable.original; 
-        		//IDs[1][j]=ASid[j];
+        		IDs[1][j]=ASid[j];
         	}
     		for(int j=0;j<IDs[2].length;j++){
         		IDs[2][j]=AFid[j];
         	}
     		for(int j=0;j<IDs[3].length;j++){
-    			IDs[3][j]=R.drawable.original; 
-    			//IDs[3][j]=AMid[j];
+    			IDs[3][j]=AMid[j];
         	}
     		for(int j=0;j<IDs[4].length;j++){
-    			IDs[4][j]=R.drawable.original; 
-    			//IDs[4][j]=AOid[j];
+    			IDs[4][j]=AOid[j];
         	}
     	}
     

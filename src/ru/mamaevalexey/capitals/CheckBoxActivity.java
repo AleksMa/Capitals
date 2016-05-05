@@ -14,12 +14,12 @@ import android.widget.CheckBox;
 public class CheckBoxActivity extends Activity {
 
 boolean check[] = new boolean[5];	
-
+String Name = "Новый Игрок";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_check_box);
-		
+		Name = getIntent().getExtras().getString("Name");
 	}
 	
 	public void buttonClicked(View view){
@@ -32,6 +32,7 @@ boolean check[] = new boolean[5];
 				(!check[0] && !check[1] && !check[2] && !check[3] && !check[4])){
 			Intent i = new Intent(this, MainActivity.class);
             i.putExtra("CH_ALL", true);
+            i.putExtra("Name", Name);
             startActivity(i);
 		}
 		else{
@@ -40,6 +41,7 @@ boolean check[] = new boolean[5];
             for(int j=0;j<5;j++){
             	i.putExtra("CH_"+(j+1), check[j]);
     		}
+            i.putExtra("Name", Name);
             startActivity(i);
 		}
 		

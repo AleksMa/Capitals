@@ -18,7 +18,8 @@
         android:layout_marginTop="33dp"
         android:text="Ваше имя: "
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="32dp" />
+        android:textSize="32dp"
+         />
 
     <EditText
         android:id="@+id/editText1"
@@ -43,6 +44,16 @@
         android:layout_toRightOf="@+id/editText1"
         android:onClick="ChangeName"
         android:text="Изменить"
+        android:textSize="32dp" />
+
+    <Button
+        android:id="@+id/IntoMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/buttonName"
+        android:layout_centerHorizontal="true"
+        android:text="Главное меню"
+        android:onClick="ChangeName"
         android:textSize="32dp" />
     
 </RelativeLayout>

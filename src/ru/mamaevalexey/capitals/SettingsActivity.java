@@ -4,6 +4,7 @@ package ru.mamaevalexey.capitals;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,10 +19,21 @@ public class SettingsActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		SharedPreferences shared = this.getPreferences(0);
 		setContentView(R.layout.activity_settings);
 		Update();
 	}
 
+	@Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences shared = this.getPreferences(0);
+        SharedPreferences.Editor editor = shared.edit();
+        editor.putString("name", Name);
+        editor.commit();
+    }
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -53,6 +65,11 @@ public class SettingsActivity extends Activity {
     		EditText text = (EditText) findViewById(R.id.editText1);
 			Name = text.getEditableText().toString();
     		Update();
+    	}
+    	else if(buttonId==R.id.IntoMain){
+    		Intent i = new Intent(this, MenuActivity.class);
+            i.putExtra("Name", Name);
+            startActivity(i);
     	}
 	}
 	

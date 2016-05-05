@@ -62,7 +62,7 @@ public class DeathmatchActivity extends Activity{
         dbManager = DBManager.getInstance(this);
         //---
         RelativeLayout layout =(RelativeLayout)findViewById(R.id.BasicGameBackground);
-        layout.setBackgroundResource(R.drawable.original);
+        layout.setBackgroundResource(R.drawable.original1);
         //---
         Resources res = getResources();
         String[][][] ARR = new String[2][5][];
