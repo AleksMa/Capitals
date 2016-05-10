@@ -22,11 +22,14 @@ public class MenuActivity extends Activity {
 		SharedPreferences shared = this.getPreferences(0);
 		RelativeLayout layout =(RelativeLayout)findViewById(R.id.MenuLayout);
         layout.setBackgroundResource(R.drawable.original);
-        if(shared!=null)first = shared.getBoolean("f", true);
+        /*if(shared!=null){
+        	first = shared.getBoolean("f", true);
+        	MenuName = shared.getString("Name", "Новый игрок");
+        }
         if(!first){
         	MenuName = getIntent().getExtras().getString("Name");
         	first = true;
-        }
+         }*/
 	}
 
 	@Override
@@ -34,30 +37,10 @@ public class MenuActivity extends Activity {
         super.onPause();
         SharedPreferences shared = this.getPreferences(0);
         SharedPreferences.Editor editor = shared.edit();
+        editor.putString("Name", MenuName);
         editor.putBoolean("f", first);
         editor.commit();
     }
-	
-	
-	
-	/*@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}*/
 	
 
 	/*@Override

@@ -162,7 +162,7 @@ public class MainActivity extends Activity{
         SharedPreferences.Editor editor = shared.edit();
         editor.putBoolean("trans", trans);
         editor.commit();
-        if(score!=0)dbManager.addResult(GameName, score);
+        //if(score!=0)dbManager.addResult(GameName, score);
     }
     
     @Override
@@ -191,31 +191,9 @@ public class MainActivity extends Activity{
     	}
     }
     
-    public void Buttons(final Button btn){
-    	tap = true;
-		Drawable d = getResources().getDrawable(R.drawable.button_check);
-		btn.setBackgroundDrawable(d);
-		new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-            	ClickedCapital = btn.getText().toString();
-            	Result();
-            	if(right)btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_right));
-            	else btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_false));
-            	new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                    	btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_background));
-                    	
-                    	ContinueGame();
-                    }
-                }, 1000);
-            }
-        }, 1000);
-		
-    }
+   
     
-    /*public void Buttons(final Button btn){
+    public void Buttons(final Button btn){
     	tap = true;
 		Drawable d = getResources().getDrawable(R.drawable.button_check);
 		btn.setBackgroundDrawable(d);
@@ -237,7 +215,7 @@ public class MainActivity extends Activity{
             }
         }, 1000);
 		
-    }*/
+    }
     
     public void Result(){
     	if(ClickedCapital.equals(MainCountry.capital)){
