@@ -22,14 +22,14 @@ public class MenuActivity extends Activity {
 		SharedPreferences shared = this.getPreferences(0);
 		RelativeLayout layout =(RelativeLayout)findViewById(R.id.MenuLayout);
         layout.setBackgroundResource(R.drawable.original);
-        /*if(shared!=null){
+        if(shared!=null){
         	first = shared.getBoolean("f", true);
         	MenuName = shared.getString("Name", "Новый игрок");
         }
         if(!first){
         	MenuName = getIntent().getExtras().getString("Name");
         	first = true;
-         }*/
+         }
 	}
 
 	@Override
