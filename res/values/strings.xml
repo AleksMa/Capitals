@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Capitals_v0.1</string>
+    <string name="app_name">Столицы мира</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Настройки</string>
     <string name="action_game">Игра</string>

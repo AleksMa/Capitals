@@ -15,11 +15,12 @@ import android.widget.TextView;
 
 public class SettingsActivity extends Activity {
 
-	private String Name = "Новый Игрок";
+	String Name;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		SharedPreferences shared = this.getPreferences(0);
+		Name = getIntent().getExtras().getString("Name");
 		setContentView(R.layout.activity_settings);
 		Update();
 	}
@@ -29,7 +30,7 @@ public class SettingsActivity extends Activity {
         super.onPause();
         SharedPreferences shared = this.getPreferences(0);
         SharedPreferences.Editor editor = shared.edit();
-        editor.putString("name", Name);
+        editor.putString("Name", Name);
         editor.commit();
     }
 	
@@ -41,11 +42,9 @@ public class SettingsActivity extends Activity {
 		return true;
 	}
 	
-	@Override
+	/*@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+		
 		int id = item.getItemId();
     	switch (id) {
         case R.id.action_settings:
@@ -56,7 +55,7 @@ public class SettingsActivity extends Activity {
         default:
             return super.onOptionsItemSelected(item);
         }
-	}
+	}*/
 	
 	public void ChangeName(View view){
 		int buttonId = view.getId();

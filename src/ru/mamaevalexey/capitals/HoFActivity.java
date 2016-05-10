@@ -40,16 +40,6 @@ public class HoFActivity extends Activity {
     		deleteAll(view);
     		restv.setText("");
     	}
-    	/*else if(buttonId==R.id.DeleteForName){
-    		EditText text = (EditText) findViewById(R.id.DeleteForName);
-			String Name = text.getEditableText().toString();
-    		deleteForName(view, Name);
-    		for (Result res : results)
-    		{
-    			resStr += res.name + ": " + res.score + "\n";
-    		}	
-    		restv.setText(resStr);
-    	}*/
 	}
 	
 	public void deleteAll (View v)

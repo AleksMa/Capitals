@@ -23,7 +23,6 @@ public class MenuActivity extends Activity {
 		RelativeLayout layout =(RelativeLayout)findViewById(R.id.MenuLayout);
         layout.setBackgroundResource(R.drawable.original);
         if(shared!=null)first = shared.getBoolean("f", true);
-        if(MenuName.equals("Новый игрок"))first = true;
         if(!first){
         	MenuName = getIntent().getExtras().getString("Name");
         	first = true;
@@ -86,6 +85,7 @@ public class MenuActivity extends Activity {
 		}
 		else if(buttonId == R.id.MenuSButton){
 			Intent i = new Intent(this, SettingsActivity.class);
+			i.putExtra("Name", MenuName);
             first = false;
 			startActivity(i);
 		}

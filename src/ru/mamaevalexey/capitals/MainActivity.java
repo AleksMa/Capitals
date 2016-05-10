@@ -39,15 +39,11 @@ import android.widget.Toast;
 public class MainActivity extends Activity{
 
 	static DBManager dbManager;
-	//public int K = 20;
-	//private String [] ArrOfCounries/* = new String[K]*/;
-	//public String [] ArrOfCapitals/* = new String[K]*/;
-	//public Country [] MainArray = new Country [K]; 
 	public ArrayList<Country> MainCountryArray = new ArrayList<Country>(); 
 	private String [] Variants = new String[4];
 	public Country MainCountry;
 	public int IDs[][] = new int [5][]; 
-	private boolean right, trans = false, light = false;
+	private boolean right, trans = false;
 	private String ClickedCapital, PreviousCapital="";
 	private int score=0;
     private String GameName = "Новый Игрок";
@@ -62,13 +58,8 @@ public class MainActivity extends Activity{
         Resources res = getResources();
         SharedPreferences shared = this.getPreferences(0);
         dbManager = DBManager.getInstance(this);
-        //---
-        
-        //layout.setBackgroundResource(0x7f020057);
-        //---
         MakeId();
         String[][][] ARR = new String[2][5][];
-		//ARR[1] = new String[2][5];
         ARR[0][0] = res.getStringArray(R.array.EUcountries);
         ARR[0][1] = res.getStringArray(R.array.ASIcountries);
         ARR[0][2] = res.getStringArray(R.array.AFRcountries);
@@ -92,8 +83,6 @@ public class MainActivity extends Activity{
         	for(int i=0;i<5;i++){
         		check[i]=getIntent().getExtras().getBoolean("CH_"+(i+1));
         	}
-        	/*if(check[0])Toast.makeText(this, "Европа выбрана", Toast.LENGTH_LONG).show();
-        	else Toast.makeText(this, "Европа не выбрана", Toast.LENGTH_LONG).show();*/
         	
             	for(int i=0; i<5;i++){
             		if(check[i]){
@@ -105,7 +94,7 @@ public class MainActivity extends Activity{
             }
         }
         GameName = getIntent().getExtras().getString("Name");
-        LoadCountries();
+        //LoadCountries();
         if(savedInstanceState!=null)
         {
         	 Variants = savedInstanceState.getStringArray("var");
@@ -142,20 +131,9 @@ public class MainActivity extends Activity{
         return true;
     }
 
-    /*public void onSettingsMenuClick(MenuItem item) {
-    	switchSettingsActivity(null);
-    }
-    
-    public void switchSettingsActivity(View v){
-        Intent i = new Intent(this, SettingsActivity.class);
-        startActivity(i);
-    }*/
-    
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        //outState.putInt(i+" "+j, puzzle[i][j]);
-        //outState.putInt("x", 1);
         outState.putStringArray("var", Variants);
         outState.putInt("scr", score);
         outState.putString("pr", PreviousCapital);
@@ -182,7 +160,6 @@ public class MainActivity extends Activity{
         super.onPause();
         SharedPreferences shared = this.getPreferences(0);
         SharedPreferences.Editor editor = shared.edit();
-        //editor.putInt("scr", score);
         editor.putBoolean("trans", trans);
         editor.commit();
         if(score!=0)dbManager.addResult(GameName, score);
@@ -193,38 +170,13 @@ public class MainActivity extends Activity{
         super.onStop();
     }
     
-    public void LoadCountries(){
+    /*public void LoadCountries(){
     	
-    	/*Resources res = getResources();
-    	
-		ArrOfCounries = res.getStringArray(R.array.countries_array);
-		ArrOfCapitals = res.getStringArray(R.array.capitals_array);*/
-    	
-    	/*try {
-			File CouFile = new File("Countries.txt");
-			File CapFile = new File("Capitals.txt");
-			Scanner CouScanner = new Scanner(CouFile);
-			Scanner CapScanner = new Scanner(CapFile);
-			for(int i=0; i<K; i++){
-				ArrOfCounries[i]=CouScanner.next();
-				ArrOfCapitals[i]=CapScanner.next();
-	    	}
-			CapScanner.close();
-			CouScanner.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}*/
-    	
-    	/*for(int i=0; i<K; i++){
-    		MainArray[i] = new Country(ArrOfCounries[i], ArrOfCapitals[i]);
-    	}*/
-    		
-    }
+    }*/
     
     public void buttonClicked(View view) {
     	int buttonId = view.getId();
     	final Button btn = (Button) view.findViewById(buttonId);
-    	//Toast.makeText(this, "Ответ: "+btn.getText().toString(), Toast.LENGTH_LONG).show();
     	if(buttonId==R.id.NewGameButton){
     		if(score!=0)dbManager.addResult(GameName, score);
     		ChooseCountry();
@@ -232,20 +184,40 @@ public class MainActivity extends Activity{
     		score=0;
     		Update();
     	}
-    	/*else if(buttonId==R.id.HoFbutton){
-    		startActivity(new Intent(this, HoFActivity.class));
-    	}*/
     	else{
     		if(!tap){
-    		Knopochki(btn);
+    		Buttons(btn);
     		}
     	}
     }
     
-    public void Knopochki(final Button btn){
+    public void Buttons(final Button btn){
     	tap = true;
-    	Drawable d = getResources().getDrawable(R.drawable.button_check);
-    	
+		Drawable d = getResources().getDrawable(R.drawable.button_check);
+		btn.setBackgroundDrawable(d);
+		new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+            	ClickedCapital = btn.getText().toString();
+            	Result();
+            	if(right)btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_right));
+            	else btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_false));
+            	new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                    	btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_background));
+                    	
+                    	ContinueGame();
+                    }
+                }, 1000);
+            }
+        }, 1000);
+		
+    }
+    
+    /*public void Buttons(final Button btn){
+    	tap = true;
+		Drawable d = getResources().getDrawable(R.drawable.button_check);
 		btn.setBackgroundDrawable(d);
 		new Handler().postDelayed(new Runnable() {
             @Override
@@ -265,11 +237,11 @@ public class MainActivity extends Activity{
             }
         }, 1000);
 		
-    }
+    }*/
     
     public void Result(){
     	if(ClickedCapital.equals(MainCountry.capital)){
-    		//Toast.makeText(this, "Правильный ответ :)", Toast.LENGTH_SHORT).show();
+    		//Toast.makeText(this, "Правильный ответ", Toast.LENGTH_SHORT).show();
     		right = true;
     		PreviousCapital=ClickedCapital;
     	}
@@ -281,11 +253,12 @@ public class MainActivity extends Activity{
     	score++;
     	ChooseCountry();
         MakeVariants();
-        
+        tap = false;
     	}	
     	else {
     		if(score!=0)dbManager.addResult(GameName, score);
     		MakeDialog();
+    		tap = false;
     		/*ChooseCountry();
             MakeVariants();
     		score=0;
@@ -294,7 +267,7 @@ public class MainActivity extends Activity{
     }
     
     void MakeDialog(){
-    	AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+    	/*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
     	builder.setTitle("Вы проиграли, "+GameName+" :(")
     			.setMessage("Правильный ответ - " + MainCountry.capital + "\n" + "Сыграем еще?")
     			.setCancelable(false)
@@ -310,6 +283,38 @@ public class MainActivity extends Activity{
     					});
     	AlertDialog alert = builder.create();
     	alert.show();
+    	String button1String = "Конечно!";*/
+    	
+    	AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
+        ad.setTitle("Вы проиграли, "+GameName+" :(");
+        ad.setMessage("Правильный ответ - " + MainCountry.capital + "\n" + "Сыграем еще?");
+        ad.setPositiveButton("Конечно!", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int arg1) {
+            	dialog.cancel();
+				ChooseCountry();
+	            MakeVariants();
+	    		score=0;
+	    		Update();
+            }
+        });
+        ad.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int arg1) {
+            	dialog.cancel();
+            	ToMainMenu();
+            }
+        });
+        ad.setCancelable(true);
+        ad.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            public void onCancel(DialogInterface dialog) {
+            }
+        });
+        AlertDialog alert = ad.create();
+    	alert.show();
+    }
+    
+    public void ToMainMenu(){
+    	Intent i = new Intent(this, MenuActivity.class);
+		startActivity(i);
     }
     
     public void MakeVariants(){
@@ -340,7 +345,6 @@ public class MainActivity extends Activity{
     	}
     	TextView txt = (TextView) findViewById(R.id.CountryText);
 		txt.setText("Назовите столицу государства \n" + MainCountry.country);
-		//txt.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_background));
     	TextView scr = (TextView) findViewById(R.id.ScoreText);
     	scr.setText("Счет: "+score);
     }
@@ -353,7 +357,6 @@ public class MainActivity extends Activity{
     		ChooseCountry();
     	}
     	RelativeLayout layout =(RelativeLayout)findViewById(R.id.BasicGameBackground);
-    	//layout.setBackgroundColor(Color.WHITE);
     	layout.setBackgroundResource(MainCountry.id);
     }
 
