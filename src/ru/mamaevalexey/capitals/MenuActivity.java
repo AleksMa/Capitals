@@ -27,9 +27,11 @@ public class MenuActivity extends Activity {
         	MenuName = shared.getString("Name", "Новый игрок");
         }
         if(!first){
+        	if(getIntent().hasExtra("Name")){
         	MenuName = getIntent().getExtras().getString("Name");
         	first = true;
-         }
+        	}
+        }
 	}
 
 	@Override
