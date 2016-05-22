@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:text="Выберите части света"
+        android:textSize="32dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="56dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:text="Европа"
+        android:textSize="32dp" />
+    
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox1"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Азия"
+        android:textSize="32dp" />
+    
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox2"
+        android:layout_below="@+id/checkBox4"
+        android:text="Африка"
+        android:textSize="32dp" />
+    
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox1"
+        android:layout_below="@+id/checkBox1"
+        android:layout_marginTop="54dp"
+        android:text="Америка"
+        android:textSize="32dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox4"
+        android:layout_below="@+id/checkBox4"
+        android:layout_marginTop="35dp"
+        android:text="Австралия и Океания"
+        android:textSize="32dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/checkBox5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="109dp"
+        android:onClick="buttonClicked"
+        android:text="Начать игру!"
+        android:textSize="32dp" />
+
+</RelativeLayout>

@@ -9,71 +9,64 @@
     tools:context="ru.mamaevalexey.capitals.MenuActivity"
     android:id="@+id/MenuLayout" >
 
-    <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity = "center"
-        android:layout_centerHorizontal="true"
-     >
-        
-         <TextView
+    <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="70dp"
         android:layout_alignParentTop="true"
-        android:textSize="18dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="30dp"
         android:text="Главное меню"
         android:textAppearance="?android:attr/textAppearanceLarge" 
         android:background="@drawable/button_normal" />
 
     <Button
         android:id="@+id/MenuNGButton"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop = "10dp"
-        android:background="@drawable/button_background"
-        android:onClick="buttonClicked"
+        android:layout_marginTop="40dp"
+        android:textSize="30dp"
         android:text="Новая игра"
-        android:textSize="18dp" />
+        android:onClick="buttonClicked"
+        android:background="@drawable/button_background" />
 
     <Button
         android:id="@+id/MenuSGButton"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/MenuNGButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop = "10dp"
-        android:textSize="18dp"
+        android:layout_marginTop="30dp"
+        android:textSize="30dp"
         android:text="Особая игра"
         android:onClick="buttonClicked"
       	android:background="@drawable/button_background" />
 
     <Button
         android:id="@+id/MenuHoFButton"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop = "10dp"
-        android:background="@drawable/button_background"
-        android:onClick="buttonClicked"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/MenuSGButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textSize="30dp"
         android:text="Рекорды"
-        android:textSize="18dp" />
+        android:onClick="buttonClicked"
+        android:background="@drawable/button_background" />
 
     <Button
         android:id="@+id/MenuSButton"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_alignLeft="@+id/MenuHoFButton"
         android:layout_below="@+id/MenuHoFButton"
-        android:layout_marginTop = "10dp"
+        android:layout_marginTop="30dp"
         android:onClick="buttonClicked"
         android:text="Настройки"
-        android:textSize="18dp"
+        android:textSize="30dp"
         android:background="@drawable/button_background" />
-        
-    </LinearLayout>
-   
 
 </RelativeLayout>

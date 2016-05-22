@@ -13,20 +13,20 @@
             android:id="@+id/results"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp" />
+            android:textSize="36dp" />
     </ScrollView>
 
     <Button
         android:id="@+id/DeleteAllButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="168dp"
         android:layout_marginTop="50dp"
         android:onClick="buttonClicked"
         android:text="Удалить все"
-        android:textSize="18dp" />
+        android:textSize="32dp" />
 
     <!--  <Button
         android:id="@+id/DeleteForName"

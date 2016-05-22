@@ -9,89 +9,102 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ru.mamaevalexey.capitals.MainActivity" >
 
-    <TextView
-        android:id="@+id/CountryText"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="83dp"
-        android:text="Назовите столицу государства"
-        android:gravity = "center"
-        android:textSize="36dp"
-        android:textAlignment="center"
-        android:background="@drawable/button_background"
-        />
+        android:gravity="center"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button20"
-        android:layout_width="355dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Button"
-        android:textSize="32dp"
-        android:onClick="buttonClicked"
-        android:background="@drawable/button_background" />
+        <TextView
+            android:id="@+id/CountryText"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_normal"
+            android:gravity="center"
+            android:text="Назовите столицу государства"
+            android:textAlignment="center"
+            android:textSize="18dp" />
 
-    <Button
-        android:id="@+id/button21"
-        android:layout_width="355dp"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/button20"
-        android:layout_below="@+id/button20"
-        android:layout_marginTop="36dp"
-        android:text="Button"
-        android:textSize="32dp"
-        android:onClick="buttonClicked"
-        android:background="@drawable/button_background" />
+        <Button
+            android:id="@+id/button20"
+            android:layout_width="205dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="buttonClicked"
+            android:text="Button"
+            android:textSize="18dp" />
 
-    <Button
-        android:id="@+id/button22"
-        android:layout_width="355dp"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/button21"
-        android:layout_below="@+id/button21"
-        android:layout_marginTop="27dp"
-        android:text="Button"
-        android:textSize="32dp"
-        android:onClick="buttonClicked"
-        android:background="@drawable/button_background" />
+        <Button
+            android:id="@+id/button21"
+            android:layout_width="205dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/button20"
+            android:layout_below="@+id/button20"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="buttonClicked"
+            android:text="Button"
+            android:textSize="18dp" />
 
-    <Button
-        android:id="@+id/button23"
-        android:layout_width="355dp"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/button22"
-        android:layout_below="@+id/button22"
-        android:layout_marginTop="22dp"
-        android:text="Button"
-        android:textSize="32dp"
-        android:onClick="buttonClicked"
-        android:background="@drawable/button_background" />
+        <Button
+            android:id="@+id/button22"
+            android:layout_width="205dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/button21"
+            android:layout_below="@+id/button21"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="buttonClicked"
+            android:text="Button"
+            android:textSize="18dp" />
 
-    <Button
-        android:id="@+id/NewGameButton"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_alignBaseline="@+id/button23"
-        android:layout_alignBottom="@+id/button23"
-        android:layout_toLeftOf="@+id/textView1"
-        android:text="Новая игра"
-        android:textSize="32dp"
-        android:onClick="buttonClicked" 
-        android:background="@drawable/button_background"/>
+        <Button
+            android:id="@+id/button23"
+            android:layout_width="205dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/button22"
+            android:layout_below="@+id/button22"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="buttonClicked"
+            android:text="Button"
+            android:textSize="18dp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/ScoreText"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_alignRight="@+id/NewGameButton"
-        android:layout_alignTop="@+id/button20"
-        android:layout_marginRight="88dp"
-        android:text="Счет: 0"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="36dp" 
-        android:background="@drawable/button_background" />
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/linearLayout1"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/ScoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/button_normal"
+            android:text="Счет: 0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/NewGameButton"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_background"
+            android:onClick="buttonClicked"
+            android:text="Новая игра"
+            android:textSize="18dp" />
+    </LinearLayout>
 
 </RelativeLayout>
